@@ -64,6 +64,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
+# Telephony-ext
+PRODUCT_PACKAGES +=  telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_AAPT_PREF_CONFIG := hdpi
