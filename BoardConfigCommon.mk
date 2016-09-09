@@ -56,7 +56,7 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.bootdevice=msm_sdcc.1 vmalloc=400M
-
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 WLAN_MODULES:
 	mkdir -p $(KERNEL_MODULES_OUT)/pronto
 	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/pronto/pronto_wlan.ko
@@ -71,7 +71,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 TARGET_NO_RPC := true
 
 # Global flags
-COMMON_GLOBAL_CFLAGS += -DMOTOROLA_UIDS -DQCOM_HARDWARE -DCAMERA_VENDOR_L_COMPAT
+# COMMON_GLOBAL_CFLAGS += -DMOTOROLA_UIDS -DQCOM_HARDWARE -DCAMERA_VENDOR_L_COMPAT
 TARGET_NR_SVC_SUPP_GIDS := 32
 
 # Display
@@ -98,7 +98,7 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
-USE_CUSTOM_AUDIO_POLICY := 1
+# USE_CUSTOM_AUDIO_POLICY := 1
 
 # FM
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -131,7 +131,7 @@ BOARD_VOLD_MAX_PARTITIONS := 40
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Init
-TARGET_UNIFIED_DEVICE := true
+# TARGET_UNIFIED_DEVICE := true
 
 # Properties (reset them here, include more in device if needed)
 TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
@@ -151,10 +151,10 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
+# include device/qcom/sepolicy/sepolicy.mk
+# BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
-MALLOC_IMPL := dlmalloc
+# MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
